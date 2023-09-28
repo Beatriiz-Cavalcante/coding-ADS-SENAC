@@ -3,18 +3,52 @@
     padding: 0;
 }
 body {
+    margin-top: 2rem;
     background-color: #D2E3FD;
 }
-div {
+.s1 {
+    display: flex;
+}
+.e1 {
+    margin-left: 1rem;
+}
+section div {
     background-color: #9CC6EE;
     border-radius: 50%;
-    width: 75px;
-    height: 75px;
-
-}
-div img {
     width: 50px;
     height: 50px;
-    padding-left: 12px;
+    margin-top: 0.3rem;
+    opacity: 1;
+}
+div:hover {
+    opacity: 0.8;
+}
+div img {
+    width: 30px;
+    height: 30px;
+    padding-left: 9px;
     padding-top: 10px;
+
+}
+.d1 {
+    
+    box-sizing: border-box;
+    margin-left: 5rem;
+    width: 80vw;
+    background-color: aliceblue;
+    
+}
+.t1 {
+    font-size: 30px;
+    color: #17528a;
+    padding-bottom: ;
+}
+.MeuNome {
+    color: #60A2DE;
+}
+.eu {
+    border-radius: 50%;
+    width: 250px;
+    height: 300px;
+    
 }
