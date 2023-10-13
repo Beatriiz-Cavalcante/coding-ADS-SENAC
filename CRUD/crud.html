@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de alunos</title>
+</head>
+<body>
+    <h1>Cadastro de Alunos</h1>
+    <form id="formAluno">
+        <label for="nome">Nome</label>
+        <input type="text" id="nome" required>
+        <label for="idade">Idade</label>
+        <input type="number" id="idade" required>
+        <button type="button" onclick="salvarAluno()">Salvar</button>
+        <button type="button" id="btnAtualizar" onclick="atualizarAluno()" style="display: none;">Atualizar</button>
+    </form>
+    <h2>Alunos cadastrados</h2>
+    <ul id="listaAlunos">
+
+    </ul>
+    <script>
+        let alunos = JSON.parse(localStorage.getItem('alunos')) || [];
+        let alunoParaEditar = null;
+
+        function renderizarLista() {
+            const listaAlunos = document.getElementById('listaAlunos');
+            listaAlunos.innerHTML='';
+
+        alunos.forEach((aluno, index) => {
+            const itemLista = document.createElement('li');
+            itemLista.textContent = `${aluno.nome}, ${aluno.idade} anos`;
+
+        const btnExcluir = document.createElement('button');
+        btnExcluir.textContent = 'Excluir';
+        btnExcluir.onclick = function() {
+            excluirAluno(index);
+        };
+        const btnEditar = document.createElement('button');
+        btnEditar.textContent='editar';
+        btnEditar.onclick = function() {
+            carregarParaEdicao(index);
+        };
+        itemLista.appendChild(btnExcluir);
+        itemLista.appendChild(btnEditar);
+        listaAlunos.appendChild(itemLista);
+        });
+        }
+        function salvarAluno() {
+            const nome = document.getElementById('nome').value;
+            const idade= document.getElementById('idade').value;
+
+            //verifica se está em modo de edição
+            if(alunoParaEditar !== null){
+                alunos[alunoParaEditar] = {nome, idade};
+                alunoParaEditar=null;
+                document.getElementById('btnAtualizar').style.display='none';
+            } else {
+                alunos.push({nome, idade});
+            }
+            localStorage.setItem('alunos', JSON.stringify(alunos));
+
+            document.getElementById('nome').value='';
+            document.getElementById('idade').value='';
+            renderizarLista();
+        }
+        function excluirAluno(index) {
+            alunos.splice(index, 1);
+            localStorage.setItem('alunos', JSON.stringify(alunos));
+            renderizarLista();
+        }
+        function carregarParaEdicao(index) {
+            alunoParaEditar=index;
+            document.getElementById('nome').value= alunos[index].nome;
+            document.getElementById('idade').value= alunos[index].idade;
+            
+            document.getElementById('btnAtualizar').style.display = 'inline-block';
+        }
+        function atualizarAluno() {
+            const nome =  document.getElementById('nome').value;
+            const idade = document.getElementById('idade').value;
+
+            alunos[alunoParaEditar] = {nome, idade};
+            localStorage.setItem('alunos', JSON.stringify(alunos));
+
+            document.getElementById('nome').value='';
+            document.getElementById('idade').value='';
+            document.getElementById('btnAtualizar').style.display = 'none';
+        
+            alunoParaEditar=null;
+            renderizarLista();
+        }
+        renderizarLista();
+    </script>
+</body>
+</html>
