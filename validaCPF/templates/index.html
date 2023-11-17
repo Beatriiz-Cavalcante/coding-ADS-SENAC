@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background-color: rgb(38, 38, 190);
+            width: 100%;
+            height: 100%;
+        }
+        div {
+            background-color: white;
+            padding-top: 1rem;
+            padding-bottom: 2rem;
+            border-radius: 20px;
+            width: 80%;
+            height: 20%;
+            margin-left: 10%;
+            margin-right: 10%;
+            margin-top: 5%;
+        }
+        h1 {
+            margin-left: 1rem;
+        }
+        .bnt {
+            background-color: rgb(38, 38, 190);
+        }
+        form {
+            margin-left: 1rem;
+        }
+        input {
+            background-color: rgb(187, 219, 247);
+            border-radius: 20px;
+            border-color: transparent;
+        }
+        #enviar {
+            background-color: rgb(132, 195, 250);
+            margin-left: 1rem;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            cursor: pointer;
+        }
+    </style>
+    <title>CPF</title>
+</head>
+<body>
+    <div>
+        <h1>Adicione seus dados</h1>
+    <form action="validar_cpf" method="post">
+            Nome:
+            <input type="text" name="nome" required>
+            CPF:
+            <input type="text" name="cpf" required>
+            <input type="submit" value="Validar CPF" id="enviar">
+       
+    </form>
+    </div>
+</body>
+</html>
