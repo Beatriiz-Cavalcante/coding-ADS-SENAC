@@ -5,41 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
-            background-color: rgb(38, 38, 190);
+            background-color: rgb(190, 38, 76);
             width: 100%;
             height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         div {
             background-color: white;
             padding-top: 1rem;
             padding-bottom: 2rem;
             border-radius: 20px;
-            width: 80%;
+            width: 30%;
             height: 20%;
-            margin-left: 10%;
-            margin-right: 10%;
             margin-top: 5%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         h1 {
             margin-left: 1rem;
         }
-        .bnt {
-            background-color: rgb(38, 38, 190);
-        }
         form {
             margin-left: 1rem;
+            display: flex;
+            flex-direction: column;
+            width: 60%;
+            
         }
         input {
-            background-color: rgb(187, 219, 247);
+            background-color: rgb(253, 140, 168);
             border-radius: 20px;
             border-color: transparent;
+            
         }
         #enviar {
-            background-color: rgb(132, 195, 250);
-            margin-left: 1rem;
-            padding-left: 1rem;
-            padding-right: 1rem;
+            background-color: rgb(212, 82, 115);
+            margin: 0.5rem auto;
             cursor: pointer;
+            width: 90px;
         }
     </style>
     <title>CPF</title>
@@ -56,5 +61,21 @@
        
     </form>
     </div>
+    <table>
+        <thead>
+            <tr>
+                <th>CPF</th>
+                <th>Nome</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for parceiro in parceiro %}
+            <tr>
+                <td>{{parceiro [0] }}</td>
+                <td>{{parceiro [1] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </body>
 </html>
